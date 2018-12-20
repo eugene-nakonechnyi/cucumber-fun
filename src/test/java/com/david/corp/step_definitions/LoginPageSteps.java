@@ -21,7 +21,7 @@ public class LoginPageSteps implements En {
 
             driverFactory = new WebDriverFactory();
 
-            driver = driverFactory.getDriver(browser, "URL");
+            driver = driverFactory.getDriver(browser, "http://www.google.com");
 
             mainPage = new MainPage(driver);
 
