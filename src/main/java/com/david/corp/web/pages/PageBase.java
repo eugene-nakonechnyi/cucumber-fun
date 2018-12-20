@@ -1,4 +1,4 @@
-package com.david.corp.pages;
+package com.david.corp.web.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
