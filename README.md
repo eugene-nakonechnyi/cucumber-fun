@@ -23,4 +23,9 @@ So, the first task:
 
 ## Let's not waiting for dead men's shoes.
 
-So, proper waiting is a whole universe. We can't write complicated scenario without waits for different conditions like some page were loaded or some element appears. Lets have a look on all of available waits in [WebDriver](https://www.testingexcellence.com/webdriver-explicit-implicit-fluent-wait/). 
+So, proper waiting is a whole universe. We can't write complicated scenario without waits for different conditions like some page were loaded or some element appears. Lets have a look on all of available waits in [WebDriver](https://www.testingexcellence.com/webdriver-explicit-implicit-fluent-wait/). And lets have a look on possible [expected contitions](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html) for custom waits.
+
+So, now we should do the next:
+- lets implement wait method to handle new page opening.
+- lets implement wait method to handle new tab opening.
+- lets implement wait method to handle new folder opening.
