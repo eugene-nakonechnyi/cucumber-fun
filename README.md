@@ -29,3 +29,13 @@ So, now we should do the next:
 - lets implement wait method to handle new page opening.
 - lets implement wait method to handle new tab opening.
 - lets implement wait method to handle new folder opening.
+
+## Nothing is impossible to a willing heart
+
+Sometimes we cannot use native webdriver methods because of special styling(disabled UI elements). [JavaScript executor](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/JavascriptExecutor.html) can be used in such cases.
+
+Lets try the next:
+- lets implement click method using javascript.
+- lets implement input text value method using javascript.
+
+## 
