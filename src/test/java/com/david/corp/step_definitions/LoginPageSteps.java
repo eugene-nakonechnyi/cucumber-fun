@@ -38,6 +38,8 @@ public class LoginPageSteps implements En {
             loginPage = new LoginPage(driver);
             inboxPage = new InboxPage(driver);
 
+
+
             //implicit wait
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
         });
