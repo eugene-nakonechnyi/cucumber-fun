@@ -34,8 +34,15 @@ So, now we should do the next:
 
 Sometimes we cannot use native webdriver methods because of special styling(disabled UI elements). [JavaScript executor](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/JavascriptExecutor.html) can be used in such cases.
 
-Lets try the next:
-- lets implement click method using javascript.
-- lets implement input text value method using javascript.
+Let's try the next:
+- let's implement click method using javascript.
+- let's implement input text value method using javascript.
 
-## 
+## Composite actions
+
+Complex user gestures can be emulated using [Actions](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html) WebDriver class.
+
+Let's try next:
+- let's move any email to any folder using drag and drop.
+- let's do a context click on any email.
+- let's move mouse to last email.
