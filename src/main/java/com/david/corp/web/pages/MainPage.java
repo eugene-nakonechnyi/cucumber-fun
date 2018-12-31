@@ -17,5 +17,4 @@ public class MainPage extends PageBase {
     public WebElement getPageHeader() {
         return pageHeader;
     }
-
 }

@@ -22,7 +22,7 @@ public class WebDriverFactory {
 
         if (browser.equals("chrome")) {
 
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 
             caps.setCapability("browserName", "Chrome");
             caps.setCapability("version", "67x64");
@@ -33,7 +33,7 @@ public class WebDriverFactory {
 
         if (browser.equals("firefox")) {
 
-            System.setProperty("webdriver.firefox.driver", "drivers/chromedriver");
+            System.setProperty("webdriver.firefox.marionette", "drivers/geckodriver.exe");
 
             caps.setCapability("browserName", "Firefox");
             caps.setCapability("version", "61x64");
