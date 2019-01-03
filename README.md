@@ -46,3 +46,10 @@ Let's try next:
 - let's move any email to any folder using drag and drop.
 - let's do a context click on any email.
 - let's move mouse to last email.
+
+## Cucumber feature tags
+
+[Tags](https://docs.cucumber.io/cucumber/api/#tags) are a great way to organise your features and scenarios.
+
+- let's create test runner class to run tests with specific tags
+- let's create test runner class to run all of tests
