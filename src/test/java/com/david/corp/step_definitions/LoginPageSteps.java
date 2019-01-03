@@ -160,21 +160,28 @@ public class LoginPageSteps implements En {
         //Actions steps
 
         When("^User drags an email to archive$", () -> {
+//            Thread.sleep(10000);
             Actions act = new Actions(driver);
-            act.dragAndDrop(inboxPage.getFirstEmail(), inboxPage.getArchive());
+            act.dragAndDrop(inboxPage.getEmails().get(0), driver.findElement(By.cssSelector("span[data-test-folder-name=Archive]"))).build().perform();
+//            inboxPage.getFirstEmail().click();
+//            Thread.sleep(5000);
+//            inboxPage.getArchive().click();
+//            Thread.sleep(5000);
         });
         And("^User can click undo button$", () -> {
             inboxPage.getUndoButton().click();
         });
         And("^User can open an an email$", () -> {
             Actions act = new Actions(driver);
-            act.contextClick(inboxPage.getFirstEmail());
+            act.contextClick(inboxPage.getEmails().get(0)).perform();
+//            Thread.sleep(5000);
         });
 
         And("^User can open last email$", () -> {
             Actions act = new Actions(driver);
 //            this.createAction(driver);
-            act.contextClick(inboxPage.getLastEmail());
+            int arrayLastIndex = inboxPage.getEmails().size() - 1;
+            act.contextClick(inboxPage.getEmails().get(arrayLastIndex)).perform();
         });
 
 

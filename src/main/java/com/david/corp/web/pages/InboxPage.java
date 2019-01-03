@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class InboxPage extends PageBase {
 
     public InboxPage (WebDriver driver) {
@@ -34,17 +36,28 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[role=presentation]")
     private WebElement profile;
 
-    @FindBy(css = "data-test-id='message-subject'][1]")
-    private WebElement firstEmail;
+    //1
+//    @FindBy(css = "[data-test-id='message-subject'][1]")
+//    @FindBy(xpath = "(//*[@data-test-id='senders'])[0]")
+//    @FindBy(xpath = "//button[@data-test-id='icon-btn-checkbox']")
+//    @FindBy(xpath = "//a[@href='/d/folders/1/messages/4']")
+    @FindBy(css = "[data-test-id=senders]")
+    private List<WebElement> emails;
 
-    @FindBy(css = "[title='Archive - no emails  ")
+    //2
+//    @FindBy(css = "[title='Archive - no emails  ']")
+//    @FindBy(xpath = "//a[@href='/d/folders/21']")
+    @FindBy(css = "span[data-test-folder-name=Archive]")
     private WebElement archive;
+
+
 
     @FindBy(css = "[data-test-id='undo-button']")
     private WebElement undoButton;
 
-    @FindBy(css = "data-test-id='message-subject'][-1]")
-    private WebElement lastEmail;
+//    //3
+//    @FindBy(css = "([data-test-id='message-subject'])[-1]")
+//    private WebElement lastEmail;
 
 
     public WebElement getInbox() {
@@ -63,11 +76,13 @@ public class InboxPage extends PageBase {
         return unread;
     }
 
-    public WebElement getFirstEmail() { return firstEmail; }
+    public List<WebElement> getEmails() {
+        return emails;
+    }
 
     public WebElement getArchive() { return archive; }
 
     public WebElement getUndoButton() { return undoButton; }
 
-    public WebElement getLastEmail() { return lastEmail; }
+
 }
