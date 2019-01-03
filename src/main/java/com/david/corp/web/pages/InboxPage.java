@@ -34,6 +34,18 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[role=presentation]")
     private WebElement profile;
 
+    @FindBy(css = "data-test-id='message-subject'][1]")
+    private WebElement firstEmail;
+
+    @FindBy(css = "[title='Archive - no emails  ")
+    private WebElement archive;
+
+    @FindBy(css = "[data-test-id='undo-button']")
+    private WebElement undoButton;
+
+    @FindBy(css = "data-test-id='message-subject'][-1]")
+    private WebElement lastEmail;
+
 
     public WebElement getInbox() {
         return inbox;
@@ -50,4 +62,12 @@ public class InboxPage extends PageBase {
     public WebElement getUnread() {
         return unread;
     }
+
+    public WebElement getFirstEmail() { return firstEmail; }
+
+    public WebElement getArchive() { return archive; }
+
+    public WebElement getUndoButton() { return undoButton; }
+
+    public WebElement getLastEmail() { return lastEmail; }
 }

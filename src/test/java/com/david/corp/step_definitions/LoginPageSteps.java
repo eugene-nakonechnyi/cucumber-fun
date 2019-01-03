@@ -49,11 +49,16 @@ public class LoginPageSteps implements En {
         });*/
 
         And("^User enters username: ([^\"]*)$", (String username) -> {
-            loginPage.getLoginField().sendKeys(username);
+//            loginPage.getLoginField().sendKeys(username);
+            ((JavascriptExecutor) driver).executeScript(
+                    "var username = document.getElementById('login-username');\n" +
+                            "username.value = arguments[0]", username);
         });
 
         When ("^User clicks Next$", () -> {
-            loginPage.nextButton.click();
+//            loginPage.nextButton.click();
+            ((JavascriptExecutor) driver).executeScript(
+                    "document.getElementById('login-signin').click()");
         });
 
         Then("^Password screen should be displayed$", () -> {
@@ -151,6 +156,28 @@ public class LoginPageSteps implements En {
             driver.getCurrentUrl().compareTo("https://www.google.com");
         });
 
+
+        //Actions steps
+
+        When("^User drags an email to archive$", () -> {
+            Actions act = new Actions(driver);
+            act.dragAndDrop(inboxPage.getFirstEmail(), inboxPage.getArchive());
+        });
+        And("^User can click undo button$", () -> {
+            inboxPage.getUndoButton().click();
+        });
+        And("^User can open an an email$", () -> {
+            Actions act = new Actions(driver);
+            act.contextClick(inboxPage.getFirstEmail());
+        });
+
+        And("^User can open last email$", () -> {
+            Actions act = new Actions(driver);
+//            this.createAction(driver);
+            act.contextClick(inboxPage.getLastEmail());
+        });
+
+
     }
     //=============Helpers
 
@@ -172,5 +199,9 @@ public class LoginPageSteps implements En {
         });
 
     }
+
+//    private void createAction (WebDriver driver){
+//        Actions act = new Actions(driver);
+//    }
     //to-do cleanup: replace the waiting methods with the helper method
 }
