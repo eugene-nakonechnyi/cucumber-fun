@@ -18,8 +18,6 @@ public class LoginPage extends PageBase {
         return pageHeader;
     }
 
-    //find by id
-
     //Login Field
     @FindBy (name = "username")
     private WebElement loginField;
@@ -37,14 +35,12 @@ public class LoginPage extends PageBase {
     public WebElement signInButton;
 
 
-
+    public WebElement getLoginField() {
+        return loginField;
+    }
 
     public WebElement getPasswordField() {
         return passwordField;
-    }
-
-    public WebElement getLoginField() {
-        return loginField;
     }
 
 }

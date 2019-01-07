@@ -36,7 +36,6 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[role=presentation]")
     private WebElement profile;
 
-    //1
 //    @FindBy(css = "[data-test-id='message-subject'][1]")
 //    @FindBy(xpath = "(//*[@data-test-id='senders'])[0]")
 //    @FindBy(xpath = "//button[@data-test-id='icon-btn-checkbox']")
@@ -44,20 +43,14 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[data-test-id=senders]")
     private List<WebElement> emails;
 
-    //2
 //    @FindBy(css = "[title='Archive - no emails  ']")
 //    @FindBy(xpath = "//a[@href='/d/folders/21']")
     @FindBy(css = "span[data-test-folder-name=Archive]")
     private WebElement archive;
 
-
-
     @FindBy(css = "[data-test-id='undo-button']")
     private WebElement undoButton;
 
-//    //3
-//    @FindBy(css = "([data-test-id='message-subject'])[-1]")
-//    private WebElement lastEmail;
 
 
     public WebElement getInbox() {

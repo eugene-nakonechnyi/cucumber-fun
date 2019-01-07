@@ -7,16 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
-//temp
-import com.david.corp.web.pages.InboxPage;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -28,7 +21,6 @@ public class LoginPageSteps implements En {
     private WebDriver driver;
 
     private LoginPage loginPage;
-    private InboxPage inboxPage;
 
     public LoginPageSteps() {
 
@@ -36,7 +28,6 @@ public class LoginPageSteps implements En {
             driverFactory = new WebDriverFactory();
             driver = driverFactory.getDriver(browser, "http://mail.yahoo.com");
             loginPage = new LoginPage(driver);
-            inboxPage = new InboxPage(driver);
 
 
 
