@@ -39,19 +39,11 @@ public class InboxPageSteps implements En {
             //implicit wait
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
 
-            ((JavascriptExecutor) driver).executeScript(
-                    "var username = document.getElementById('login-username');\n" +
-                            "username.value = arguments[0]", username);
-
-            ((JavascriptExecutor) driver).executeScript(
-                    "document.getElementById('login-signin').click()");
-
-            loginPage.getPasswordField().sendKeys(password);
-
-            loginPage.signInButton.click();
+            //Login
+            loginPage.login(username, password);
         });
 
-        When("^User clicks Unread$", () -> {
+        When("^User clicks Unread at inbox page$", () -> {
             //explicit wait
             WebElement dynamicElement = (new WebDriverWait(driver, 10))
                     .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title='Unread - Click to see unread mails']")));
@@ -59,11 +51,11 @@ public class InboxPageSteps implements En {
             //hint: waits can be defined for the whole class, or for all the steps
             //or a helper method
         });
-        When("^User clicks top right menu$", () -> {
+        When("^User clicks top right menu at inbox page$", () -> {
 
             inboxPage.getMenu().click();
         });
-        Then("^User can click Yahoo link$", () -> {
+        Then("^User can click Yahoo link at inbox page$", () -> {
             //fluent wait
             Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
                     .withTimeout(5, SECONDS)
@@ -98,7 +90,7 @@ public class InboxPageSteps implements En {
         });
 
         //new tab steps
-        When("^User opens new tab$", () -> {
+        When("^User opens new tab at inbox page$", () -> {
 //            driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
 //
 //            Actions act = new Actions(driver);
@@ -113,27 +105,27 @@ public class InboxPageSteps implements En {
 
             driver.switchTo().window(tabs.get(0));
         });
-        Then("^New tab is displayed$", () -> {
+        Then("^New tab is displayed at inbox page$", () -> {
             driver.getCurrentUrl().compareTo("https://www.google.com");
         });
 
 
         //Actions steps
 
-        When("^User drags an email to archive$", () -> {
+        When("^User drags an email to archive at inbox page$", () -> {
             inboxPage.dragDropJavaScript(inboxPage.getEmails().get(0), inboxPage.getArchive());
             Thread.sleep(5000);
         });
-        And("^User can click undo button$", () -> {
+        And("^User can click undo button at inbox page$", () -> {
             inboxPage.getUndoButton().click();
         });
-        Then("^User can open an an email$", () -> {
+        Then("^User can open an an email at inbox page$", () -> {
             Actions act = new Actions(driver);
             act.contextClick(inboxPage.getEmails().get(0)).perform();
             Thread.sleep(2000);
         });
 
-        Then("^User can open last email$", () -> {
+        Then("^User can open last email at inbox page$", () -> {
             Actions act = new Actions(driver);
 //            this.createAction(driver);
             int arrayLastIndex = inboxPage.getEmails().size() - 1;

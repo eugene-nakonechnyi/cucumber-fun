@@ -1,6 +1,8 @@
 package com.david.corp.web.pages;
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,6 +43,23 @@ public class LoginPage extends PageBase {
 
     public WebElement getPasswordField() {
         return passwordField;
+    }
+
+    //======================= LOGIN HELPER =====================
+
+    public void login(String username, String password){
+        ((JavascriptExecutor) driver).executeScript(
+                "var username = document.getElementById('login-username');\n" +
+                        "username.value = arguments[0]", username);
+
+        ((JavascriptExecutor) driver).executeScript(
+                "document.getElementById('login-signin').click()");
+
+        getPasswordField().sendKeys(password);
+
+        signInButton.click();
+
+        waitWebElementToBeVisible(driver.findElement(By.cssSelector("div#mail-app-container")));
     }
 
 }
