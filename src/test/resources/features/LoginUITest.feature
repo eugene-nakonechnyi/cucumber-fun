@@ -22,7 +22,7 @@
 @UITest
   Feature:  Wait limits work while loading different pages
 
-  @Positive
+  @Positive @Smoke
   Scenario Outline: Navigate to new folder, tab, and page from Inbox
     Given User navigates with <browser> to login page
     And User enters username: <username>
