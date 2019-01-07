@@ -53,3 +53,10 @@ Let's try next:
 
 - let's create test runner class to run tests with specific tags
 - let's create test runner class to run all of tests
+
+## Well now we have everything to rock
+
+- let's create happy path test for new email compose
+- let's create delete email test
+- let's create tests for email list toolbar (archive, move, spam ...)
+- let's create new folder create test
