@@ -70,35 +70,6 @@ public class LoginPageSteps implements En {
         });
 
 
-
-        //how to pass a webdriver?
-        //Inbox steps
-
-    }
-    //=============Helpers
-
-    /**
-     * This method can be used to wait for a custom element being located on the page
-     * @param elementLocator is a String representing the css locator to target
-     * @return
-     */
-    private void untilConditionCSS (String elementLocator){
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(5, SECONDS)
-                .pollingEvery(2,SECONDS)
-                .ignoring(NoSuchElementException.class);
-
-        WebElement yahooHome = wait.until(new Function<WebDriver, WebElement>(){
-            public WebElement apply(WebDriver driver){
-                return driver.findElement(By.cssSelector(elementLocator));
-            }
-        });
-
     }
 
-
-//    private void createAction (WebDriver driver){
-//        Actions act = new Actions(driver);
-//    }
-    //to-do cleanup: replace the waiting methods with the helper method
 }

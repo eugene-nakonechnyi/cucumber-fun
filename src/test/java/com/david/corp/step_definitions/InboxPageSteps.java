@@ -48,8 +48,6 @@ public class InboxPageSteps implements En {
             WebElement dynamicElement = (new WebDriverWait(driver, 10))
                     .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title='Unread - Click to see unread mails']")));
             inboxPage.getUnread().click();
-            //hint: waits can be defined for the whole class, or for all the steps
-            //or a helper method
         });
         When("^User clicks top right menu at inbox page$", () -> {
 
@@ -57,18 +55,8 @@ public class InboxPageSteps implements En {
         });
         Then("^User can click Yahoo link at inbox page$", () -> {
             //fluent wait
-            Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                    .withTimeout(5, SECONDS)
-                    .pollingEvery(2,SECONDS)
-                    .ignoring(NoSuchElementException.class);
-            WebElement foo = wait.until(new Function<WebDriver, WebElement>(){
-                public WebElement apply(WebDriver driver){
-                    return driver.findElement(By.xpath("(//*[@id='ybarDialpadMenuBody']//*[@aria-label='Yahoo Home']/span)[1]"));
-                    //possible to-do: find a cleaner thing to find, ie url, title
-                }
-            });
+            this.untilConditionXPath("(//*[@id='ybarDialpadMenuBody']//*[@aria-label='Yahoo Home']/span)[1]");
 
-            //save the web handle first
             String currentTab = driver.getWindowHandle();
 
             inboxPage.getYahooHome().click();
@@ -76,12 +64,7 @@ public class InboxPageSteps implements En {
             ArrayList<String> tabs = new ArrayList<> (driver.getWindowHandles());
             driver.switchTo().window(tabs.get(1));
 
-            //implement new until condition
-            WebElement yahooHome = wait.until(new Function<WebDriver, WebElement>(){
-                public WebElement apply(WebDriver driver){
-                    return driver.findElement(By.cssSelector("[title='Search Web']"));
-                }
-            });
+            this.untilConditionCSS("[title='Search Web']");
 
             driver.switchTo().window(currentTab);
 
@@ -91,12 +74,6 @@ public class InboxPageSteps implements En {
 
         //new tab steps
         When("^User opens new tab at inbox page$", () -> {
-//            driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
-//
-//            Actions act = new Actions(driver);
-            //sendKeys is the error here
-//            act.keyDown(Keys.CONTROL).sendKeys("t").keyUp(Keys.CONTROL).build().perform();
-
             String SelectLinkNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN);
             driver.findElement(By.xpath("//span[@class='_yb_1uf1n _yb_f2om4']"));
 
@@ -152,6 +129,20 @@ public class InboxPageSteps implements En {
         WebElement yahooHome = wait.until(new Function<WebDriver, WebElement>(){
             public WebElement apply(WebDriver driver){
                 return driver.findElement(By.cssSelector(elementLocator));
+            }
+        });
+
+    }
+
+    private void untilConditionXPath (String elementLocator){
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(5, SECONDS)
+                .pollingEvery(2,SECONDS)
+                .ignoring(NoSuchElementException.class);
+
+        WebElement yahooHome = wait.until(new Function<WebDriver, WebElement>(){
+            public WebElement apply(WebDriver driver){
+                return driver.findElement(By.xpath(elementLocator));
             }
         });
 
