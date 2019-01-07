@@ -3,14 +3,9 @@ Feature:  Test Actions class to test complex user gestures: drag and drop, conte
 
   @Positive @Smoke
   Scenario Outline: Actions can be used to drag and drop
-    Given User navigates with <browser> to login page
-    And User enters username: <username>
-    When User clicks Next
-    Then Password screen should be displayed
-    And User enters password: <password>
-    When User clicks sign in button
+    Given User navigates with <browser> to login page with username: <username> and password: <password>
     When User drags an email to archive
-#    And User can click undo button
+    And User can click undo button
 
     Examples:
       | browser | username          | password   |
@@ -19,13 +14,8 @@ Feature:  Test Actions class to test complex user gestures: drag and drop, conte
 
   @Positive
   Scenario Outline: Actions can be used to context click
-    Given User navigates with <browser> to login page
-    And User enters username: <username>
-    When User clicks Next
-    Then Password screen should be displayed
-    And User enters password: <password>
-    When User clicks sign in button
-    And User can open an an email
+    Given User navigates with <browser> to login page with username: <username> and password: <password>
+    Then User can open an an email
 
     Examples:
       | browser | username          | password   |
@@ -34,13 +24,8 @@ Feature:  Test Actions class to test complex user gestures: drag and drop, conte
 
   @Positive
   Scenario Outline: Actions can be used to select last email
-    Given User navigates with <browser> to login page
-    And User enters username: <username>
-    When User clicks Next
-    Then Password screen should be displayed
-    And User enters password: <password>
-    When User clicks sign in button
-    And User can open last email
+    Given User navigates with <browser> to login page with username: <username> and password: <password>
+    Then User can open last email
 
     Examples:
       | browser | username          | password   |

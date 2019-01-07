@@ -44,10 +44,6 @@ public class LoginPageSteps implements En {
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
         });
 
-/*        And("^User enters username: \"([^\"]*)\"$", (String username) -> {
-            loginPage.getXLoginFieldAutocapitalize().sendKeys(username);
-        });*/
-
         And("^User enters username: ([^\"]*)$", (String username) -> {
 //            loginPage.getLoginField().sendKeys(username);
             ((JavascriptExecutor) driver).executeScript(
@@ -86,104 +82,6 @@ public class LoginPageSteps implements En {
 
         //how to pass a webdriver?
         //Inbox steps
-        Then("^Inbox is displayed$", () -> {
-            inboxPage.getInbox().isDisplayed();
-
-        });
-        When("^User clicks Unread$", () -> {
-            //explicit wait
-            WebElement dynamicElement = (new WebDriverWait(driver, 10))
-                    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title='Unread - Click to see unread mails']")));
-            inboxPage.getUnread().click();
-            //hint: waits can be defined for the whole class, or for all the steps
-            //or a helper method
-        });
-        When("^User clicks top right menu$", () -> {
-
-            inboxPage.getMenu().click();
-        });
-        Then("^User can click Yahoo link$", () -> {
-            //fluent wait
-            Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                    .withTimeout(5, SECONDS)
-                    .pollingEvery(2,SECONDS)
-                    .ignoring(NoSuchElementException.class);
-            WebElement foo = wait.until(new Function<WebDriver, WebElement>(){
-                public WebElement apply(WebDriver driver){
-                    return driver.findElement(By.xpath("(//*[@id='ybarDialpadMenuBody']//*[@aria-label='Yahoo Home']/span)[1]"));
-                    //possible to-do: find a cleaner thing to find, ie url, title
-                }
-            });
-
-            //save the web handle first
-            String currentTab = driver.getWindowHandle();
-
-            inboxPage.getYahooHome().click();
-
-            ArrayList<String> tabs = new ArrayList<> (driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(1));
-
-            //implement new until condition
-            WebElement yahooHome = wait.until(new Function<WebDriver, WebElement>(){
-                public WebElement apply(WebDriver driver){
-                    return driver.findElement(By.cssSelector("[title='Search Web']"));
-                }
-            });
-
-            driver.switchTo().window(currentTab);
-
-            Thread.sleep(5000);
-
-        });
-
-        //new tab steps
-        When("^User opens new tab$", () -> {
-//            driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
-//
-//            Actions act = new Actions(driver);
-            //sendKeys is the error here
-//            act.keyDown(Keys.CONTROL).sendKeys("t").keyUp(Keys.CONTROL).build().perform();
-
-            String SelectLinkNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN);
-            driver.findElement(By.xpath("//span[@class='_yb_1uf1n _yb_f2om4']"));
-
-            ArrayList<String> tabs = new ArrayList<> (driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(1));
-
-            driver.switchTo().window(tabs.get(0));
-        });
-        Then("^New tab is displayed$", () -> {
-            driver.getCurrentUrl().compareTo("https://www.google.com");
-        });
-
-
-        //Actions steps
-
-        When("^User drags an email to archive$", () -> {
-//            Thread.sleep(10000);
-            Actions act = new Actions(driver);
-            act.dragAndDrop(inboxPage.getEmails().get(0), driver.findElement(By.cssSelector("span[data-test-folder-name=Archive]"))).build().perform();
-//            inboxPage.getFirstEmail().click();
-//            Thread.sleep(5000);
-//            inboxPage.getArchive().click();
-//            Thread.sleep(5000);
-        });
-        And("^User can click undo button$", () -> {
-            inboxPage.getUndoButton().click();
-        });
-        And("^User can open an an email$", () -> {
-            Actions act = new Actions(driver);
-            act.contextClick(inboxPage.getEmails().get(0)).perform();
-//            Thread.sleep(5000);
-        });
-
-        And("^User can open last email$", () -> {
-            Actions act = new Actions(driver);
-//            this.createAction(driver);
-            int arrayLastIndex = inboxPage.getEmails().size() - 1;
-            act.contextClick(inboxPage.getEmails().get(arrayLastIndex)).perform();
-        });
-
 
     }
     //=============Helpers
@@ -206,6 +104,7 @@ public class LoginPageSteps implements En {
         });
 
     }
+
 
 //    private void createAction (WebDriver driver){
 //        Actions act = new Actions(driver);
