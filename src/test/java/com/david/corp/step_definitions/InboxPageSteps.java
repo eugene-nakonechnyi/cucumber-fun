@@ -109,8 +109,90 @@ public class InboxPageSteps implements En {
             act.contextClick(inboxPage.getEmails().get(arrayLastIndex)).perform();
             Thread.sleep(2000);
         });
+        When("^User clicks compose button$", () -> {
+            inboxPage.getComposeButton().click();
+        });
+        Then("^User can input an ([^\"]*)$", (String address) -> {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(inboxPage.getEmailToField());
+            actions.click();
+            actions.sendKeys(address);
+            actions.sendKeys(Keys.RETURN);
+            actions.build().perform();
+            Thread.sleep(5000);
 
+//            inboxPage.getEmailToField().sendKeys(address);
+//            inboxPage.getEmailSubject().sendKeys(subject);
+//            inboxPage.getEmailBody().sendKeys(body);
 
+        });
+        And("^User can input a ([^\"]*)$", (String subject) -> {
+            inboxPage.getEmailSubject().sendKeys("Test Subject Evaluation");
+//            Actions actions = new Actions(driver);
+//            actions.moveToElement(inboxPage.getEmailSubject());
+//            actions.click();
+//            actions.sendKeys(subject);
+//            actions.build().perform();
+        });
+
+        And("^User can write a ([^\"]*)$", (String body) -> {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(inboxPage.getEmailBody());
+            actions.click();
+            actions.sendKeys(body);
+            actions.build().perform();
+        });
+
+        And("^User can click send button$", () -> {
+            inboxPage.getSendButton().click();
+        });
+        Then("^Email is displayed in Sent folder ([^\"]*)$", (String body) -> {
+            inboxPage.getSentFolder().click();
+            inboxPage.getEmails().get(0).click();
+            //is there a way to compare against the body string from two steps ago?
+            inboxPage.getMessageBody().toString().compareTo(body);
+        });
+
+        Then("^User can delete the email$", () -> {
+            Thread.sleep(10000);
+            inboxPage.getInbox().click();
+            inboxPage.getEmails().get(0).click();
+            this.untilConditionCSS("[data-test-id='toolbar-delete']");
+            inboxPage.getDeleteButton().click();
+        });
+        When("^User clicks create custom folder$", () -> {
+            inboxPage.getCreateNewFolder().click();
+        });
+        Then("^New can enter ([^\"]*)$", (String folderName) -> {
+            inboxPage.getNewFolderName().sendKeys(folderName);
+            inboxPage.getNewFolderName().sendKeys(Keys.RETURN);
+
+        });
+        And("^New folder is created$", () -> {
+            inboxPage.getCustomFolder().click();
+        });
+        Then("^User can use archive on the email$", () -> {
+            inboxPage.getEmails().get(0).click();
+            inboxPage.getArchiveButton().click();
+        });
+        Then("^User can use move on the email$", () -> {
+            inboxPage.getEmails().get(0).click();
+            inboxPage.getMoveButton().click();
+            inboxPage.getToTrash().click();
+        });
+        Then("^User can use spam on the email$", () -> {
+            inboxPage.getEmails().get(0).click();
+            inboxPage.getSpamButton().click();
+        });
+//        Then("^User can delete ([^\"]*)$", () -> {
+//            Actions actions = new Actions(driver);
+//            actions.moveToElement(inboxPage.getCustomFolder());
+//            actions.moveToElement(inboxPage.getFolderOptions());
+//            actions.click();
+//            actions.moveToElement(inboxPage.getDeleteFolder());
+//            actions.click();
+//            actions.build().perform();
+//        });
 
     }
     //=============Helpers

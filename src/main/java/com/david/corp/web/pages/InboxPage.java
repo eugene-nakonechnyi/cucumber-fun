@@ -51,6 +51,57 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[data-test-id='undo-button']")
     private WebElement undoButton;
 
+    @FindBy(css = "[data-test-id='compose-button']")
+    private WebElement composeButton;
+
+    @FindBy(css = "[data-test-id='compose-header-field-to']")
+    private WebElement emailToField;
+
+    @FindBy(css = "[data-test-id='compose-subject']")
+    private WebElement emailSubject;
+
+    @FindBy(css = "[data-test-id='rte']")
+    private WebElement emailBody;
+
+    @FindBy(css = "[data-test-id='compose-send-button']")
+    private WebElement sendButton;
+
+    @FindBy(css ="span[data-test-folder-name='Sent']")
+    private WebElement sentFolder;
+
+    @FindBy(css = "[data-test-id='toolbar-delete']")
+    private WebElement deleteButton;
+
+    @FindBy(css = "[data-test-id='message-view-body-content']")
+    private WebElement messageBody;
+
+    @FindBy(css = "[data-test-id='create-folder-container']")
+    private WebElement createNewFolder;
+
+    @FindBy(css = "[aria-label='Enter folder name [Press enter to create folder]']")
+    private WebElement newFolderName;
+
+    @FindBy(css = "[data-test-folder-name='TestFolder']")
+    private WebElement customFolder;
+
+    @FindBy(css = "[data-test-id='folder-menu-hook']")
+    private WebElement folderOptions;
+
+    @FindBy(css = "[title='Delete folder']")
+    private WebElement deleteFolder;
+
+    @FindBy(css = "[data-test-id='toolbar-archive']")
+    private WebElement archiveButton;
+
+    @FindBy(css = "[data-test-id='folder-menu-button']")
+    private WebElement moveButton;
+
+    @FindBy(css = "[title='Trash']")
+    private WebElement toTrash;
+
+    @FindBy(css = "[data-test-id='toolbar-spam']")
+    private WebElement spamButton;
+
 
 
     public WebElement getInbox() {
@@ -77,5 +128,75 @@ public class InboxPage extends PageBase {
 
     public WebElement getUndoButton() { return undoButton; }
 
+    public WebElement getProfile() {
+        return profile;
+    }
 
+    public WebElement getComposeButton() {
+        return composeButton;
+    }
+
+    public WebElement getEmailToField() {
+        return emailToField;
+    }
+
+    public WebElement getEmailSubject() {
+        return emailSubject;
+    }
+
+    public WebElement getEmailBody() {
+        return emailBody;
+    }
+
+    public WebElement getSendButton() {
+        return sendButton;
+    }
+
+    public WebElement getSentFolder() {
+        return sentFolder;
+    }
+
+    public WebElement getDeleteButton() {
+        return deleteButton;
+    }
+
+    public WebElement getMessageBody() {
+        return messageBody;
+    }
+
+    public WebElement getCreateNewFolder() {
+        return createNewFolder;
+    }
+
+    public WebElement getNewFolderName() {
+        return newFolderName;
+    }
+
+    public WebElement getCustomFolder() {
+        return customFolder;
+    }
+
+    public WebElement getFolderOptions() {
+        return folderOptions;
+    }
+
+    public WebElement getDeleteFolder() {
+        return deleteFolder;
+    }
+
+    public WebElement getArchiveButton() {
+        return archiveButton;
+    }
+
+    public WebElement getMoveButton() {
+        return moveButton;
+    }
+
+    public WebElement getToTrash() {
+        return toTrash;
+    }
+
+    public WebElement getSpamButton() {
+        return spamButton;
+    }
 }
