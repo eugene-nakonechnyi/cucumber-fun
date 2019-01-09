@@ -60,3 +60,9 @@ Let's try next:
 - let's create delete email test
 - let's create tests for email list toolbar (archive, move, spam ...)
 - let's create new folder create test
+
+## Let's try to create a new test including feature file, step definitions, page objects. 
+
+Following User menu > Account Info > Recent Activity you can find login activity for the last 30 days. You have to scroll this list to bottom and click on the first item in the list, the login activity list will be popped up. First login activity date can be treated as account creation date(Wed, Dec 26, 2018 12:55 PM PST).
+
+- Let's create a new test to validate account creation date(can be validated in recent activities)
