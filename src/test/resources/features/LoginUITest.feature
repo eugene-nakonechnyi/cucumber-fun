@@ -30,11 +30,10 @@
     Then Password screen should be displayed
     And User enters password: <password>
     When User clicks sign in button
-    Then Inbox is displayed
-    When User clicks Unread
-    And User clicks top right menu
-    Then User can click Yahoo link
-    And New tab is displayed
+    When User clicks Unread at inbox page
+    And User clicks top right menu at inbox page
+    Then User can click Yahoo link at inbox page
+    And New tab is displayed at inbox page
 
     Examples:
       | browser | username          | password   |

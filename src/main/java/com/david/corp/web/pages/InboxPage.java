@@ -102,6 +102,11 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[data-test-id='toolbar-spam']")
     private WebElement spamButton;
 
+    @FindBy (css = "[for='ybarAccountMenu']")
+    private WebElement accountMenu;
+
+    @FindBy (xpath = "//a[contains(@href, 'https://login.yahoo.com/account/personalinfo')]")
+    private List<WebElement> accountInfo;
 
 
     public WebElement getInbox() {
@@ -198,5 +203,13 @@ public class InboxPage extends PageBase {
 
     public WebElement getSpamButton() {
         return spamButton;
+    }
+
+    public WebElement getAccountMenu() {
+        return accountMenu;
+    }
+
+    public List<WebElement> getAccountInfo() {
+        return accountInfo;
     }
 }

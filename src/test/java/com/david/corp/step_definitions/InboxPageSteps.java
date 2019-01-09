@@ -2,6 +2,7 @@ package com.david.corp.step_definitions;
 
 import com.david.corp.web.pages.InboxPage;
 import com.david.corp.web.pages.LoginPage;
+import com.david.corp.web.pages.AccountPage;
 import com.google.common.base.Function;
 import cucumber.api.java8.En;
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +27,7 @@ public class InboxPageSteps implements En {
 
     private LoginPage loginPage;
     private InboxPage inboxPage;
+    private AccountPage accountPage;
 
     public InboxPageSteps() {
 
@@ -35,6 +37,7 @@ public class InboxPageSteps implements En {
             driver = driverFactory.getDriver(browser, "http://mail.yahoo.com");
             loginPage = new LoginPage(driver);
             inboxPage = new InboxPage(driver);
+            accountPage = new AccountPage(driver);
 
             //implicit wait
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
