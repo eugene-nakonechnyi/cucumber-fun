@@ -18,9 +18,6 @@ public class AccountPage extends PageBase {
     @FindBy(css = "[class='action-item-row tdevice-item']")
     private List<WebElement> deviceList;
 
-//    @FindBy(css = "[class='tdevices-history-list']")
-//    private List<WebElement> historyList;
-
     @FindBy(css = "[class='last-use']")
     private List<WebElement> lastUseDate;
 
@@ -35,10 +32,6 @@ public class AccountPage extends PageBase {
     public List<WebElement> getDeviceList() {
         return deviceList;
     }
-
-//    public List<WebElement> getHistoryList() {
-//        return historyList;
-//    }
 
     public List<WebElement> getLastUseDate() {
         return lastUseDate;

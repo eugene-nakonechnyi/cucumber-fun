@@ -26,7 +26,6 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[for=ybarDialpadMenu]")
     private WebElement menu;
 
-    //this locator is not human-generated, find new one?
     @FindBy(xpath = "(//*[@id='ybarDialpadMenuBody']//*[@aria-label='Yahoo Home']/span)[1]")
     private WebElement yahooHome;
 
@@ -36,15 +35,9 @@ public class InboxPage extends PageBase {
     @FindBy(css = "[role=presentation]")
     private WebElement profile;
 
-//    @FindBy(css = "[data-test-id='message-subject'][1]")
-//    @FindBy(xpath = "(//*[@data-test-id='senders'])[0]")
-//    @FindBy(xpath = "//button[@data-test-id='icon-btn-checkbox']")
-//    @FindBy(xpath = "//a[@href='/d/folders/1/messages/4']")
     @FindBy(css = "[data-test-id=senders]")
     private List<WebElement> emails;
 
-//    @FindBy(css = "[title='Archive - no emails  ']")
-//    @FindBy(xpath = "//a[@href='/d/folders/21']")
     @FindBy(css = "span[data-test-folder-name=Archive]")
     private WebElement archive;
 

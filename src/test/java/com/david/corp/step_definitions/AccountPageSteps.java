@@ -3,23 +3,15 @@ package com.david.corp.step_definitions;
 import com.david.corp.web.pages.LoginPage;
 import cucumber.api.java8.En;
 
-import com.david.corp.web.pages.LoginPage;
 import com.david.corp.web.pages.InboxPage;
 import com.david.corp.web.pages.AccountPage;
-import com.google.common.base.Function;
-import cucumber.api.java8.En;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.testng.Assert;
 
 
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.util.ArrayList;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -43,15 +35,12 @@ public class AccountPageSteps implements En {
             inboxPage = new InboxPage(driver);
             accountPage = new AccountPage(driver);
 
-            //implicit wait
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
 
-            //Login
             loginPage.login(username, password);
         });
 
         When("^User clicks Account info tab in inbox page$", () -> {
-//            String mailboxTab = driver.getWindowHandle();
 
             inboxPage.getAccountMenu().click();
             inboxPage.getAccountInfo().get(0).click();
@@ -59,7 +48,6 @@ public class AccountPageSteps implements En {
             ArrayList<String> tabs = new ArrayList<> (driver.getWindowHandles());
             driver.switchTo().window(tabs.get(1));
 
-//            String profileTab = driver.getWindowHandle();
 
         });
         And("^User clicks Recent Activity in profile page$", () -> {
@@ -84,24 +72,15 @@ public class AccountPageSteps implements En {
 
         });
         And("^Earliest activity matches ([^\"]*)$", (String creationDate) -> {
-            String result = "fail";
+            int result = 0;
             for(int i=0; i < accountPage.getLastUseDate().size(); i++){
-                String check = accountPage.getLastUseDate().get(i).getText();
-                if (check.equals(creationDate)){
-                    result = "pass";
+                if (accountPage.getLastUseDate().get(i).getText().equals(creationDate)){
+                    result = i;
+                    break;
                 }
-
-            }
-            if (result.equals("pass")){
-                System.out.println("The loop worked.");
-
-            }
-            else {
-                loginPage.getLoginField().click();
-                //is there a way to just return a fail state?
             }
 
-
+            Assert.assertEquals(accountPage.getLastUseDate().get(result).getText(), creationDate);
         });
     }
 }
