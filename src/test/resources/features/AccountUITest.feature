@@ -13,4 +13,5 @@ Feature:  Test that user can see account creation date
     Examples:
       | browser | username          | password   | creationDate                   |
       | chrome  | davidtestaccount1 | Password@1 | Wed, Dec 26, 2018 12:55 PM PST |
-#      | firefox | davidtestaccount1 | Password@1 | Wed, Dec 26, 2018 12:55 PM PST |
+#      | grid  | davidtestaccount1 | Password@1 | Wed, Dec 26, 2018 12:55 PM PST |
+      | firefox | davidtestaccount1 | Password@1 | Wed, Dec 26, 2018 12:55 PM PST |

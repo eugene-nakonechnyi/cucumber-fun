@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverFactory {
@@ -22,24 +23,34 @@ public class WebDriverFactory {
 
         if (browser.equals("chrome")) {
 
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
 
-            caps.setCapability("browserName", "Chrome");
-            caps.setCapability("version", "67x64");
-            caps.setCapability("platform", "Windows 10");
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 
-            driver = new ChromeDriver();
+//            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+//
+//            caps.setCapability("browserName", "Chrome");
+//            caps.setCapability("version", "67x64");
+//            caps.setCapability("platform", "Windows 10");
+//
+//            driver = new ChromeDriver();
         }
 
         if (browser.equals("firefox")) {
 
-            System.setProperty("webdriver.firefox.marionette", "drivers/geckodriver.exe");
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("firefox");
 
-            caps.setCapability("browserName", "Firefox");
-            caps.setCapability("version", "61x64");
-            caps.setCapability("platform", "Windows 10");
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 
-            driver = new FirefoxDriver();
+//            System.setProperty("webdriver.firefox.marionette", "drivers/geckodriver.exe");
+//
+//            caps.setCapability("browserName", "Firefox");
+//            caps.setCapability("version", "61x64");
+//            caps.setCapability("platform", "Windows 10");
+//
+//            driver = new FirefoxDriver();
         }
 
         //driver.manage().window().maximize();
