@@ -10,12 +10,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverFactory {
 
     private static RemoteWebDriver driver;
-
 
     RemoteWebDriver getDriver(String browser, String url) throws MalformedURLException {
 
@@ -26,7 +26,7 @@ public class WebDriverFactory {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
 
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+            driver = new RemoteWebDriver(new URL("http://" + ReadPropertiesFile.getProperty("grid.ip") + ":4444/wd/hub"), capabilities);
 
 //            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 //
@@ -42,7 +42,7 @@ public class WebDriverFactory {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("firefox");
 
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+            driver = new RemoteWebDriver(new URL("http://" + ReadPropertiesFile.getProperty("grid.ip") + ":4444/wd/hub"), capabilities);
 
 //            System.setProperty("webdriver.firefox.marionette", "drivers/geckodriver.exe");
 //
