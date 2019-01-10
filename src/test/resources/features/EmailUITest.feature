@@ -15,7 +15,7 @@ Feature:  User should be able to use Yahoo mail to manage emails
       | browser | username          | password   | address                     | subject      | body                           |
       | chrome  | davidtestaccount1 | Password@1 | davidtestaccount2@yahoo.com | Test Message | This is a test message.        |
 #      | chrome  | davidtestaccount1 | Password@1 | davidtestaccount2@yahoo.com | Test Message | This is a second test message. |
-#      | firefox | davidtestaccount1 | Password@1 | davidtestaccount2@yahoo.com | Test Message | This is a test message.        |
+      | firefox | davidtestaccount1 | Password@1 | davidtestaccount2@yahoo.com | Test Message | This is a test message.        |
 
   @Positive
   Scenario Outline: User can delete an email
@@ -29,7 +29,7 @@ Feature:  User should be able to use Yahoo mail to manage emails
 
     Examples:
       | browser | username          | password   | address                     | subject      | body                           |
-      | chrome  | davidtestaccount1 | Password@1 | davidtestaccount1@yahoo.com | Test Message | This is a test message.        |
+      | firefox  | davidtestaccount1 | Password@1 | davidtestaccount1@yahoo.com | Test Message | This is a test message.        |
 
   @Positive
   Scenario Outline: User can use email toolbar to archive a message

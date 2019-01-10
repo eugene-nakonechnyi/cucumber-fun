@@ -10,7 +10,7 @@ Feature:  Test Actions class to test complex user gestures: drag and drop, conte
     Examples:
       | browser | username          | password   |
       | chrome  | davidtestaccount1 | Password@1 |
-#      | firefox | davidtestaccount1 | Password@1 |
+      | firefox | davidtestaccount1 | Password@1 |
 
   @Positive
   Scenario Outline: Actions can be used to context click

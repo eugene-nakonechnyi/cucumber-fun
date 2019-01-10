@@ -48,8 +48,8 @@ public class InboxPageSteps implements En {
 
         When("^User clicks Unread at inbox page$", () -> {
             //explicit wait
-            WebElement dynamicElement = (new WebDriverWait(driver, 10))
-                    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title='Unread - Click to see unread mails']")));
+            WebElement dynamicElement = (new WebDriverWait(driver, 15))
+                    .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[data-test-smartview-type='UNREAD']")));
             inboxPage.getUnread().click();
         });
         When("^User clicks top right menu at inbox page$", () -> {
